@@ -11,21 +11,30 @@
         let itemName = prompt('What is the name of the item?');
         let basePrice = prompt('Base Price?');
         let blackFriday = prompt('Is today Black Friday?');
-        let searchEngine = prompt('Did the you find the product through a search engine? ');
-        let competition = prompt('Did you visit a comparison-shopping site?');
+        let searchEngine = prompt('Did the purchaser find the product through a search engine? ');
+        let competitor = prompt('Did purchaser visit a comparison-shopping site?');
 
-        let textAlert = ("The base price for " + itemName + " is " + '$' + basePrice);
+        let finalPrice = basePrice;
+        let message = "The base price for " + itemName + " is " + '$' + basePrice + ". ";
+      
+        if (searchEngine === 'yes') {
+            message = message + 'The purchaser came through a search engine, so we will increase the price by 1%. ';
+            finalPrice = finalPrice * 1.01;
+            };
 
-
-      if (searchEngine === 'yes' && competition === 'yes' && blackFriday == 'no') {
-            alert(textAlert += ' .The purchaser shopped other sites, so we will reduce the price by 10% get their business'+ '. The final price is $' + (basePrice-(basePrice*0.1)+ (basePrice*0.01)) + '.');
-        } if (searchEngine === 'yes' && competition === 'yes' && blackFriday == 'yes'){
-            alert(textAlert += 'We will reduce the price by 25% since it is Black Friday. The final price is $' + (basePrice-(basePrice*0.25)+ (basePrice*0.01)) + '.');
+        if (competitor ==='yes'){
+            message = message + 'This purchaser is a comparison shopper, so we will reduce the price by 10%. ';
+            finalPrice -= (finalPrice * 0.1);
         }
+
+        if (blackFriday ==='yes'){
+            message = message + 'Since it is Black Friday, we will reduce the price by 25%. ';
+            finalPrice -= (finalPrice * 0.25) 
+        }
+
         
+        alert(message + 'The final price is $' + finalPrice + ".")
         
-        
-    
 
     
     </script>
